@@ -13,6 +13,9 @@ module.exports = function(application){
 	application.post('/ordernar_acao_sudito', function(req, res){
 		jogo(application).ordernar_acao_sudito(application,req,res);
 	});
+	application.get('/revogar_acao', function(req, res){
+		jogo(application).revogar_acao(application,req,res);
+	});
 	application.get('/sair', function(req, res){
 		jogo(application).sair(application,req,res);
 	});

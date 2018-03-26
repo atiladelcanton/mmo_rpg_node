@@ -1,3 +1,5 @@
+var ObjectID = require('mongodb').ObjectID;
+
 function JogoDAO(dbConnection){
     this._connection = dbConnection;
 
@@ -72,6 +74,19 @@ JogoDAO.prototype.getAcoes = function(usuario,res){
         client.close();
     });
 };
+JogoDAO.prototype.revogarAcao = function(_id,res){
+    var mongoConnected = this._connection.connectToMongo(function(client, db){
+        var collection = db.collection('acao');
+        collection.remove(
+            {_id : ObjectID(_id)},
+            function(err,result)
+            {
+                res.redirect('jogo?msg=D');
+            }
+        );
+        client.close();
+    });
+}
 module.exports = function(){
     return JogoDAO;
 };

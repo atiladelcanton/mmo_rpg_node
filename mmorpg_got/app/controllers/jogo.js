@@ -71,3 +71,11 @@ module.exports.ordernar_acao_sudito = function(application,req,res){
     jogo.acao(dadosForm);
     res.redirect('jogo?msg=B');
 };
+
+module.exports.revogar_acao = function(application,req,res){
+    var url_query = req.query;
+    var dbConnection = new application.config.dbConnection();
+    var jogo  = new application.app.models.JogoDAO(dbConnection);
+    var _id = url_query.id_acao;
+    jogo.revogarAcao(_id,res);
+}

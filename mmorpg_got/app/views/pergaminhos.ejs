@@ -15,7 +15,7 @@
 				var momento_atual = date.getTime();
 				var segundos_restantes = Math.round((acoes[i].acao_termina_em - momento_atual) / 1000);
 			%>
-			<li><%= acoes[i].quantidade%> <%= txt_acao %>  <small>restam <span class="tempo_restante"><%= segundos_restantes %></span> segundos - <a href="#" class="label label-danger">Revogar Ordem</a></small></li>
+			<li><%= acoes[i].quantidade%> <%= txt_acao %>  <small>restam <span class="tempo_restante"><%= segundos_restantes %></span> segundos - <a href="/revogar_acao?id_acao=<%= acoes[i]._id %>" class="label label-danger">Revogar Ordem</a></small></li>
 		<% } %>
 	</ul>
 	<% } else { %>
