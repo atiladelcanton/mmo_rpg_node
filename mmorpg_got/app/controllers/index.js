@@ -1,5 +1,5 @@
 module.exports.index = function(application,req,res){
-    res.render('index',{validacao:{}});
+    res.render('index',{validacao:{},usuario_invalido:{}});
 };
 
 module.exports.autenticar = function(application,req,res){
@@ -9,7 +9,7 @@ module.exports.autenticar = function(application,req,res){
     req.assert('senha','Senha não pode ser vazio').notEmpty();
     var erros = req.validationErrors();
     if(erros){
-        res.render('index',{validacao:erros});
+        res.render('index',{validacao:erros,usuario_invalido:{}});
         return;
     }
     var dbConnection = new application.config.dbConnection();

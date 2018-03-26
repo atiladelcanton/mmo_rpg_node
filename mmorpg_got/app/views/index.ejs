@@ -30,6 +30,15 @@
 						</ul>
 					</div>
 				<% } %>
+				<% if(usuario_invalido == true) { %>
+				<div class="alert alert-danger">
+						<strong>Atenção!</strong>
+						<ul>
+							<li>Usuário ou senha inválidos</li>
+						</ul>
+					</div>
+				<% } %>
+
 				<form class="form-inline form-entrar" action="/autenticar" method="POST">
 					<div class="form-group">				
 						<input type="text" name="usuario" id="usuario" autocomplete="off" placeholder="Usuário" class="form-control"/>

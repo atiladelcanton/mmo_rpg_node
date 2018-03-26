@@ -20,14 +20,22 @@ UsuariosDAO.prototype.autenticar = function(usuario,req,res){
                 req.session.casa = result[0].casa;
                 var hour = 3600000;
                 req.session.cookie.expires = new Date(Date.now() + hour);
+                
+                
             }
-            console.log(req.session.autorizado);
+
+            if(result[0] == undefined){
+                res.render('index',{validacao:{},usuario_invalido:true});
+                return;
+            }
+
             if(req.session.autorizado){
 
                 res.redirect('jogo');
             }else{
-                res.render('index',{validacao:{}});
+                res.render('index',{validacao:{},usuario_invalido:{}});
             }
+            
         });
         client.close();
     });
